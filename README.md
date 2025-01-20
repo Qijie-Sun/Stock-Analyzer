@@ -1,5 +1,6 @@
-# Algorithmic Trading
-This program is designed to use bollinger bands and RSI to predict if a certain stock is likely to go up or down in the short term.
+# Stock Analyzer (In Development)
+This program uses technical indicators including Bollinger Bands and Relative Strength Index (RSI) to predict short-term price movements for a given stock.
+By analyzing historical and real-time market data, it identifies potential buying or selling opportunities that can guide manual or automated trading decisions.
 
 ---
 ## Features
