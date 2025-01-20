@@ -31,3 +31,12 @@ def rsi(data, window):
 
     data['RSI'] = rsi
     return data
+
+# plot graph with bollinger bands and rsi values
+def analysis(ticker):
+    data = fetch_stock(ticker, period, interval)
+    data = bollinger_bands(data, window)
+    data = rsi(data, window)
+
+    plt.figure(figsize=(14, 5))
+    plt.plot(data['Close'], label='Close Price', color='blue', alpha=1)
