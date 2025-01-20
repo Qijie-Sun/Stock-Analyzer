@@ -40,3 +40,9 @@ def analysis(ticker):
 
     plt.figure(figsize=(14, 5))
     plt.plot(data['Close'], label='Close Price', color='blue', alpha=1)
+    
+    plt.xlabel('Date')
+    plt.ylabel('Price (USD)')
+    plt.legend()
+    plt.grid()
+    plt.show()
