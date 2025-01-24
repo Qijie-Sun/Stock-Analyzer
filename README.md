@@ -24,7 +24,7 @@ By analyzing historical and real-time market data, it identifies potential buyin
 
 ### Strategies/Drawbacks
 - Bollinger Bands can be combined with RSI to identify strong oversold/overbought conditions for opportunities to enter or exit the market
-- Index funds may be more effective than individual stocks as they reduce risk by reflecting the overall market
+- Using this program on index funds may be more effective than individual stocks as they reduce risk by reflecting the overall market
 - Bollinger Bands and RSI can generate false signals and lead to premature trades
 - Bollinger Bands and RSI do not consider other important factors like external conditions and statistics like the EPS
 
