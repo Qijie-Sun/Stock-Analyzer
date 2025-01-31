@@ -50,7 +50,9 @@ def analysis(ticker):
 
     plt.figure(figsize=(14, 5))
     plt.plot(data['Close'], label='Close Price', color='blue', alpha=1)
-    
+
+    plt.title(f'Stock Analysis - {ticker}\n', fontweight='bold')
+    plt.text(0.512, 0.9, f'Recommendation: {action(data)}', fontsize=10, ha='center', transform=plt.gcf().transFigure)
     plt.xlabel('Date')
     plt.ylabel('Price (USD)')
     plt.legend()
