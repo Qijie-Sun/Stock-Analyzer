@@ -32,6 +32,16 @@ def rsi(data, window):
     data['RSI'] = rsi
     return data
 
+# recommendation based on current price
+def action(data):
+    latest = data.iloc[-1]
+    if latest['Close'] <= latest['Lower Band']:
+        return 'Buy'
+    elif latest['Close'] >= latest['Upper Band']:
+        return 'Sell'
+    else:
+        return 'Hold'
+
 # plot graph with bollinger bands and rsi values
 def analysis(ticker):
     data = fetch_stock(ticker, period, interval)
