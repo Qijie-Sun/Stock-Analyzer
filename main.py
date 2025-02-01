@@ -36,8 +36,12 @@ def rsi(data, window):
 def action(data):
     latest = data.iloc[-1]
     if latest['Close'] <= latest['Lower Band']:
+        if latest['RSI'] <= 30:
+            return 'Strong Buy'
         return 'Buy'
     elif latest['Close'] >= latest['Upper Band']:
+        if latest['RSI'] >= 70:
+            return 'Strong Sell'
         return 'Sell'
     else:
         return 'Hold'
