@@ -54,6 +54,9 @@ def analysis(ticker):
 
     plt.figure(figsize=(14, 5))
     plt.plot(data['Close'], label='Close Price', color='blue', alpha=1)
+    plt.plot(data['Moving Average'], label='Moving Average', color='orange', alpha=0.6, linestyle='--')
+    plt.plot(data['Upper Band'], label='Upper Band', color='red', alpha=0.8)
+    plt.plot(data['Lower Band'], label='Lower Band', color='green', alpha=0.8)
 
     plt.title(f'Stock Analysis - {ticker}\n', fontweight='bold')
     plt.text(0.512, 0.9, f'Recommendation: {action(data)}', fontsize=10, ha='center', transform=plt.gcf().transFigure)
