@@ -52,6 +52,7 @@ def analysis(ticker):
     data = bollinger_bands(data, window)
     data = rsi(data, window)
 
+    # graph for closing price and bollinger bands
     plt.figure(figsize=(14, 5))
     plt.plot(data['Close'], label='Close Price', color='blue', alpha=1)
     plt.plot(data['Moving Average'], label='Moving Average', color='orange', alpha=0.6, linestyle='--')
@@ -63,6 +64,17 @@ def analysis(ticker):
     plt.text(0.512, 0.9, f'Recommendation: {action(data)}', fontsize=10, ha='center', transform=plt.gcf().transFigure)
     plt.xlabel('Date')
     plt.ylabel('Price (USD)')
+    plt.legend()
+    plt.grid()
+    plt.show()
+
+    # graph for rsi values
+    plt.figure(figsize=(14, 2))
+    plt.plot(data['RSI'], label='RSI', color='dimgray', alpha=1)
+
+    plt.title(f'RSI')
+    plt.xlabel('Date')
+    plt.ylabel('RSI')
     plt.legend()
     plt.grid()
     plt.show()
