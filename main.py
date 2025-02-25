@@ -71,6 +71,8 @@ def analysis(ticker):
     # graph for rsi values
     plt.figure(figsize=(14, 2))
     plt.plot(data['RSI'], label='RSI', color='dimgray', alpha=1)
+    plt.axhline(y=70, label='70', color='red', alpha=0.8)
+    plt.axhline(y=30, label='30', color='green', alpha=0.8)
 
     plt.title(f'RSI')
     plt.xlabel('Date')
