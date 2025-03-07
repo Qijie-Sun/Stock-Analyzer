@@ -69,6 +69,8 @@ def analysis(ticker):
     plt.grid()
     plt.show()
 
+    print('')
+
     # graph for rsi values
     plt.figure(figsize=(14, 2))
     plt.plot(data['RSI'], label='RSI', color='dimgray', alpha=1)
