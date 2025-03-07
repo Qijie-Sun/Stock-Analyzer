@@ -62,6 +62,7 @@ def analysis(ticker):
 
     plt.title(f'Stock Analysis - {ticker}\n', fontweight='bold')
     plt.text(0.512, 0.9, f'Recommendation: {action(data)}', fontsize=10, ha='center', transform=plt.gcf().transFigure)
+    plt.xlim(data.index.min() - pd.Timedelta(days=10), data.index.max() + pd.Timedelta(days=10))
     plt.xlabel('Date')
     plt.ylabel('Price (USD)')
     plt.legend()
