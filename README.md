@@ -35,3 +35,6 @@ By analyzing historical and real-time market data, it identifies potential buyin
   - pandas
   - numpy
   - matplotlib
+
+## Potential Updates
+- Additional technical indicators
