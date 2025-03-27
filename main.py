@@ -46,6 +46,19 @@ def action(data):
     else:
         return 'Hold'
 
+# calculate buy and sell signals
+def signals(data):
+    data['Buy'] = np.nan
+    data['Sell'] = np.nan
+    for i in range(1, len(data)):
+        curr = data.iloc[i]
+        prev = data.iloc[i-1]
+        if curr['Close'] <= curr['Lower Band'] and prev['Close'] >= prev['Lower Band']:
+            data.loc[data.index[i], 'Buy'] = curr['Close']
+        elif curr['Close'] >= curr['Upper Band'] and prev['Close'] <= prev['Upper Band']:
+            data.loc[data.index[i], 'Sell'] = curr['Close']
+    return data
+
 # plot graph with bollinger bands and rsi values
 def analysis(ticker):
     data = fetch_stock(ticker, period, interval)
