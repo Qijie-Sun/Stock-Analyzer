@@ -64,6 +64,7 @@ def analysis(ticker):
     data = fetch_stock(ticker, period, interval)
     data = bollinger_bands(data, window)
     data = rsi(data, window)
+    data = signals(data)
 
     # graph for closing price and bollinger bands
     plt.figure(figsize=(14, 5))
