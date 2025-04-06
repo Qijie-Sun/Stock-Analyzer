@@ -74,6 +74,9 @@ def analysis(ticker):
     plt.plot(data['Lower Band'], label='Lower Band', color='green', alpha=0.8)
     plt.fill_between(data.index, data['Upper Band'], data['Lower Band'], color='gray', alpha=0.2)
 
+    plt.scatter(data.index, data['Buy'], label='Buy', marker='^', color='green', alpha=1, s=60)
+    plt.scatter(data.index, data['Sell'], label='Sell', marker='v', color='red', alpha=1, s=60)
+
     plt.title(f'Stock Analysis - {ticker}\n', fontweight='bold')
     plt.text(0.512, 0.9, f'Recommendation: {action(data)}', fontsize=10, ha='center', transform=plt.gcf().transFigure)
     plt.xlim(data.index.min() - pd.Timedelta(days=10), data.index.max() + pd.Timedelta(days=10))
