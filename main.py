@@ -93,6 +93,8 @@ def analysis(ticker):
     plt.plot(data['RSI'], label='RSI', color='dimgray', alpha=1)
     plt.axhline(y=70, label='70', color='red', alpha=0.8)
     plt.axhline(y=30, label='30', color='green', alpha=0.8)
+    plt.fill_between(data.index, data['RSI'], 70, where=(data['RSI'] >= 70), color='red', alpha=0.6, interpolate=True)
+    plt.fill_between(data.index, data['RSI'], 30, where=(data['RSI'] <= 30), color='green', alpha=0.6, interpolate=True)
 
     plt.title(f'RSI')
     plt.xlabel('Date')
