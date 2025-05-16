@@ -40,3 +40,4 @@ By analyzing historical and real-time market data, it identifies potential buyin
 - Additional technical indicators incorporating stock metrics using machine learning or neural networks
 - Market sentiment analysis based on news headlines
 - Improved UI and error handling
+- Flask or Django integration
