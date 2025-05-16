@@ -98,7 +98,9 @@ def analysis(ticker):
 
     plt.title(f'RSI')
     plt.xlabel('Date')
+    plt.xlim(data.index.min() - pd.Timedelta(days=10), data.index.max() + pd.Timedelta(days=10))
     plt.ylabel('RSI')
+    plt.yticks(np.arange(0, 101, 20))
     plt.legend()
     plt.grid()
     plt.show()
