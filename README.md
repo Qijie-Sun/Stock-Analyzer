@@ -4,6 +4,7 @@ By analyzing historical and real-time market data, it identifies potential buyin
 
 ---
 ## Features
+![Analysis](https://github.com/Qijie-Sun/Stock-Analyzer/blob/main/public/analysisS.png)
 - Historical price chart: Shows price movements for a user selected stock throughout a user selected timeframe
 - Bollinger Bands: Plotted alongside historical price for clear visuals
 - RSI: Plotted in a separate chart to show past and current RSI value
