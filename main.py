@@ -105,8 +105,31 @@ def analysis(ticker):
     plt.grid()
     plt.show()
 
+# get info about stock
+def info(ticker):
+    stock = yf.Ticker(ticker)
+    info = stock.info
+    metrics = {
+        'Company Name': info.get('longName'),
+        'Symbol': info.get('symbol'),
+        'Sector': info.get('sector'),
+        'Industry': info.get('industry'),
+        'EPS (TTM)': info.get('trailingEps'),
+        'PE Ratio (TTM)': info.get('trailingPE'),
+        'Forward PE': info.get('forwardPE'),
+        'Dividend Yield': info.get('dividendYield'),
+        'Revenue (TTM)': info.get('totalRevenue'),
+        'Net Income (TTM)': info.get('netIncomeToCommon'),
+        '52 Week High': f"${info.get('fiftyTwoWeekHigh')}",
+        '52 Week Low': f"${info.get('fiftyTwoWeekLow')}",
+    }
+    print('\nFinancial Metrics\n')
+    for key, value in metrics.items():
+        print(f'{key}: {value}')
+
 ticker = input('Enter stock ticker (e.g. AAPL): ').upper()
 period = input('Enter time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ')
 interval = '1d'
 window = 20
 analysis(ticker)
+info(ticker)
