@@ -9,6 +9,7 @@ By analyzing historical and real-time market data, it identifies potential buyin
 - Bollinger Bands: Plotted alongside historical price for clear visuals
 - RSI: Plotted in a separate chart to show past and current RSI value
 - Trading Signals: Generated based on bollinger bands and plotted on historical price chart
+- Stock Info: Includes metrics such as the EPS, PE Ratio, Revenue, Income, etc
 
 ## Technical Details
 ### Bollinger Bands
