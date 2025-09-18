@@ -139,6 +139,7 @@ def get_news():
         if title and link:
             print("Title: " + title)
             print("Link: " + link)
+            print('-' * 40)
 
 ticker = input('Enter stock ticker (e.g. AAPL): ').upper()
 period = input('Enter time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ')
@@ -146,3 +147,4 @@ interval = '1d'
 window = 20
 analysis(ticker)
 info(ticker)
+get_news()
