@@ -131,7 +131,7 @@ def info(ticker):
 def get_news():
     rss_url = "https://finance.yahoo.com/news/rssindex"
     feed = feedparser.parse(rss_url)
-    print('\nRecent news\n')
+    print('\nRecent news')
     print('-' * 40)
     for entry in feed.entries[:10]:
         title = entry.get("title")
@@ -147,4 +147,6 @@ interval = '1d'
 window = 20
 analysis(ticker)
 info(ticker)
-get_news()
+show_news = input('Would you like to see recent news? (y/n): ')
+if show_news.lower() == 'y':
+    get_news()
