@@ -141,18 +141,22 @@ def get_news():
             print("Link: " + link)
             print('-' * 40)
 
-while True:
-    ticker = input('Enter stock ticker (e.g. AAPL): ').strip().upper()
-    if not ticker:
-        print('Ticker cannot be empty')
-    else:
-        period = input('Enter time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ').strip()
-        if not period:
-            print('Time period cannot be empty')
+def main():
+    while True:
+        ticker = input('Enter stock ticker (e.g. AAPL): ').strip().upper()
+        if not ticker:
+            print('Ticker cannot be empty')
         else:
-            break
-interval = '1d'
-window = 20
-analysis(ticker)
-info(ticker)
-get_news()
+            period = input('Enter time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ').strip()
+            if not period:
+                print('Time period cannot be empty')
+            else:
+                break
+    interval = '1d'
+    window = 20
+    analysis(ticker)
+    info(ticker)
+    get_news()
+
+if __name__ == '__main__':
+    main()
