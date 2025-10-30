@@ -61,7 +61,7 @@ def signals(data):
     return data
 
 # plot graph with bollinger bands and rsi values
-def analysis(ticker):
+def analysis(ticker, period, interval, window):
     data = fetch_stock(ticker, period, interval)
     data = bollinger_bands(data, window)
     data = rsi(data, window)
@@ -154,7 +154,7 @@ def main():
                 break
     interval = '1d'
     window = 20
-    analysis(ticker)
+    analysis(ticker, period, interval, window)
     info(ticker)
     get_news()
 
