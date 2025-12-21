@@ -10,7 +10,6 @@ By analyzing historical and real-time market data, it identifies potential buyin
 - RSI: Plotted in a separate chart to show past and current RSI value
 - Trading Signals: Generated based on bollinger bands and plotted on historical price chart
 - Stock Info: Includes metrics such as the EPS, PE Ratio, Revenue, Income, etc
-- News: Lists out news relevant to the stock market
 
 ## Technical Details
 ### Bollinger Bands
@@ -38,10 +37,8 @@ By analyzing historical and real-time market data, it identifies potential buyin
   - pandas
   - numpy
   - matplotlib
-  - feedparser
 
 ## Potential Updates
-- Better customizability for news
 - Pattern recognition/price prediction using machine learning or neural networks
 - Market sentiment analysis based on news headlines
 - Improved UI and error handling
