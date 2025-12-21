@@ -2,7 +2,6 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import feedparser
 
 # get data for stock
 def fetch_stock(ticker, period, interval):
@@ -128,19 +127,6 @@ def info(ticker):
     for key, value in metrics.items():
         print(f'{key}: {value}')
 
-def get_news():
-    rss_url = "https://finance.yahoo.com/news/rssindex"
-    feed = feedparser.parse(rss_url)
-    print('\nRecent news')
-    print('-' * 40)
-    for entry in feed.entries[:10]:
-        title = entry.get("title")
-        link = entry.get("link")
-        if title and link:
-            print("Title: " + title)
-            print("Link: " + link)
-            print('-' * 40)
-
 def main():
     while True:
         ticker = input('Enter stock ticker (e.g. AAPL): ').strip().upper()
@@ -156,7 +142,6 @@ def main():
     window = 20
     analysis(ticker, period, interval, window)
     info(ticker)
-    get_news()
 
 if __name__ == '__main__':
     main()
