@@ -4,9 +4,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # get data for stock
-def fetch_stock(ticker, period, interval):
+def fetch_stock(ticker, interval, period, start=None, end=None):
     stock = yf.Ticker(ticker)
-    data = stock.history(period=period, interval=interval)
+    if period:
+        data = stock.history(period=period, interval=interval)
+    else:
+        data = stock.history(start=start, end=end, interval=interval)
     return data
 
 # calculate bollinger bands
@@ -60,8 +63,8 @@ def signals(data):
     return data
 
 # plot graph with bollinger bands and rsi values
-def analysis(ticker, period, interval, window):
-    data = fetch_stock(ticker, period, interval)
+def analysis(ticker, interval, window, period, start=None, end=None):
+    data = fetch_stock(ticker, interval, period, start, end)
     data = bollinger_bands(data, window)
     data = rsi(data, window)
     data = signals(data)
@@ -128,19 +131,24 @@ def info(ticker):
         print(f'{key}: {value}')
 
 def main():
-    while True:
-        ticker = input('Enter stock ticker (e.g. AAPL): ').strip().upper()
-        if not ticker:
-            print('Ticker cannot be empty')
-        else:
-            period = input('Enter time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ').strip()
-            if not period:
-                print('Time period cannot be empty')
-            else:
-                break
     interval = '1d'
     window = 20
-    analysis(ticker, period, interval, window)
+    while True:
+        ticker = input('Stock ticker: ').strip().upper()
+        if not ticker:
+            print('Stock ticker cannot be empty')
+        else:
+            period = input('Time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ').strip()
+            start = input('Start date (YYYY-MM-DD): ').strip()
+            end = input('End date (YYYY-MM-DD): ').strip()
+            if period:
+                analysis(ticker, interval, window, period)
+                break
+            elif start and end:
+                analysis(ticker, interval, window, None, start, end)
+                break
+            else:
+                print('Time period cannot be empty')
     info(ticker)
 
 if __name__ == '__main__':
