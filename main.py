@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# get data for stock
+# Get data for stock
 def fetch_stock(ticker, interval, period, start=None, end=None):
     stock = yf.Ticker(ticker)
     if period:
@@ -12,7 +12,7 @@ def fetch_stock(ticker, interval, period, start=None, end=None):
         data = stock.history(start=start, end=end, interval=interval)
     return data
 
-# calculate bollinger bands
+# Calculate bollinger bands
 def bollinger_bands(data, window):
     data['Moving Average'] = data['Close'].rolling(window=window).mean()
     data['Standard Deviation'] = data['Close'].rolling(window=window).std()
@@ -20,7 +20,7 @@ def bollinger_bands(data, window):
     data['Lower Band'] = data['Moving Average'] - (2 * data['Standard Deviation'])
     return data
 
-# calculate rsi
+# Calculate rsi
 def rsi(data, window):
     delta = data['Close'].diff()
 
@@ -35,7 +35,7 @@ def rsi(data, window):
     data['RSI'] = rsi
     return data
 
-# recommendation based on current price
+# Recommendation based on current price
 def action(data):
     latest = data.iloc[-1]
     if latest['Close'] <= latest['Lower Band']:
@@ -49,7 +49,7 @@ def action(data):
     else:
         return 'Hold'
 
-# calculate buy and sell signals
+# Calculate buy and sell signals
 def signals(data):
     data['Buy'] = np.nan
     data['Sell'] = np.nan
@@ -62,14 +62,14 @@ def signals(data):
             data.loc[data.index[i], 'Sell'] = curr['Close']
     return data
 
-# plot graph with bollinger bands and rsi values
+# Plot graph with bollinger bands and rsi values
 def analysis(ticker, interval, window, period, start=None, end=None):
     data = fetch_stock(ticker, interval, period, start, end)
     data = bollinger_bands(data, window)
     data = rsi(data, window)
     data = signals(data)
 
-    # graph for closing price and bollinger bands
+    # Graph for closing price and bollinger bands
     plt.figure(figsize=(14, 5))
     plt.plot(data['Close'], label='Close Price', color='blue', alpha=1)
     plt.plot(data['Moving Average'], label='Moving Average', color='orange', alpha=0.6, linestyle='--')
@@ -91,7 +91,7 @@ def analysis(ticker, interval, window, period, start=None, end=None):
 
     print('')
 
-    # graph for rsi values
+    # Graph for rsi values
     plt.figure(figsize=(14, 2))
     plt.plot(data['RSI'], label='RSI', color='dimgray', alpha=1)
     plt.axhline(y=70, label='70', color='red', alpha=0.8)
@@ -108,7 +108,7 @@ def analysis(ticker, interval, window, period, start=None, end=None):
     plt.grid()
     plt.show()
 
-# get info about stock
+# Get info about stock
 def info(ticker):
     stock = yf.Ticker(ticker)
     info = stock.info
@@ -130,6 +130,7 @@ def info(ticker):
     for key, value in metrics.items():
         print(f'{key}: {value}')
 
+# Main function
 def main():
     interval = '1d'
     window = 20
@@ -139,12 +140,12 @@ def main():
             print('Stock ticker cannot be empty')
         else:
             period = input('Time period (3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max): ').strip()
-            start = input('Start date (YYYY-MM-DD): ').strip()
-            end = input('End date (YYYY-MM-DD): ').strip()
             if period:
                 analysis(ticker, interval, window, period)
                 break
-            elif start and end:
+            start = input('Start date (YYYY-MM-DD): ').strip()
+            end = input('End date (YYYY-MM-DD): ').strip()
+            if start and end:
                 analysis(ticker, interval, window, None, start, end)
                 break
             else:
